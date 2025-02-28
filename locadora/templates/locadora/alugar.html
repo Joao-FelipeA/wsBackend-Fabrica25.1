@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alugar Filme</title>
+</head>
+<body>
+    <h1>Alugar Filme</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Alugar</button>
+    </form>
+    {% if dados_filme %}
+        <h2>Detalhes do Filme</h2>
+        <p>Título: {{ dados_filme.Title }}</p>
+        <p>Ano: {{ dados_filme.Year }}</p>
+        <p>Gênero: {{ dados_filme.Genre }}</p>
+        <p>Diretor: {{ dados_filme.Director }}</p>
+        <p>Sinopse: {{ dados_filme.Plot }}</p>
+    {% elif erro %}
+        <p>{{ erro }}</p>
+    {% endif %}
+</body>
+</html>

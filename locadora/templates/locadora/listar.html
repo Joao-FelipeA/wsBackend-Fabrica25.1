@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Filmes</title>
+</head>
+<body>
+    <h1>Lista de Filmes</h1>
+    <ul>
+        {% for filme in filmes %}
+            <li>
+                {{ filme.titulo }} ({{ filme.ano_lancamento }})
+                <a href="{% url 'deletar' filme.pk %}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
