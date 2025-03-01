@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import authenticate, login
 from django.views.generic import FormView, ListView, DeleteView, UpdateView
-from .models import Filme
-from .forms import form_alugar
+from .models import Filme, Usuario
+from .forms import form_alugar, registroform
 import requests
 
 class alugar_filme(FormView):
@@ -39,4 +40,14 @@ class deletar_filme(DeleteView):
     model = Filme
     template_name = 'locadora/deletar.html'
     success_url = '/listar/'
-# Create your views here.
+
+def registrar(request):
+    if request.method == 'POST':
+        form = registroform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('alugar')
+    else:
+        form = registroform()
+    return render(request, 'locadora/registrar.html', {'form': form})
+
