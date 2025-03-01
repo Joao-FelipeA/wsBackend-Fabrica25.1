@@ -1,5 +1,5 @@
 from django import forms
-from .models import Filme, Usuario
+from .models import filme, Usuario
 
 class registroform(forms.ModelForm):
     email = forms.EmailField(required=True)
@@ -14,6 +14,8 @@ class registroform(forms.ModelForm):
         return usuario
 
 class form_alugar(forms.ModelForm):
+    titulo = forms.CharField(label='Título do Filme', max_length=100)
+    Usuario = forms.ModelChoiceField(queryset=Usuario.objects.all(), to_field_name='nome', label='Nome do Usuário')
     class Meta:
-        model = Filme
-        fields = ['titulo']
+        model = filme
+        fields = ['titulo', 'Usuario']

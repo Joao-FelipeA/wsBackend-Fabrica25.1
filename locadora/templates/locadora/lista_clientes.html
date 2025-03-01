@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Filmes</title>
+    <title>Lista de Clientes</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -11,44 +11,45 @@
             background-color: #f8f9fa;
             padding: 20px;
         }
-        .lista-filmes {
+        .lista-clientes {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
-        .lista-filmes h1 {
+        .lista-clientes h1 {
             color: #007bff;
             margin-bottom: 20px;
+            text-align: center;
         }
-        .filme-item {
+        .cliente-item {
             border-bottom: 1px solid #ddd;
             padding: 15px 0;
         }
-        .filme-item:last-child {
+        .cliente-item:last-child {
             border-bottom: none;
         }
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
         }
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #bd2130;
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="lista-filmes">
-            <h1 class="text-center">Lista de Filmes</h1>
+        <div class="lista-clientes">
+            <h1>Lista de Clientes</h1>
             <ul class="list-unstyled">
-                {% for filme in filmes %}
-                    <li class="filme-item">
-                        <p><strong>Título:</strong> {{ filme.titulo }}</p>
-                        <p><strong>Nome do Cliente:</strong> {{ filme.usuario.nome }}</p>
-                        <a href="{% url 'deletar_filme' filme.pk %}" class="btn btn-danger btn-sm">Deletar</a>
+                {% for cliente in clientes %}
+                    <li class="cliente-item">
+                        <p><strong>Nome:</strong> {{ cliente.nome }}</p>
+                        <p><strong>Email:</strong> {{ cliente.email }}</p>
+                        <a href="{% url 'atualizar_cliente' cliente.pk %}" class="btn btn-primary btn-sm">Atualizar</a>
                     </li>
                 {% endfor %}
             </ul>

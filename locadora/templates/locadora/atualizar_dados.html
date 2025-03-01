@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deletar Filme</title>
+    <title>Atualizar Cliente</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -11,46 +11,41 @@
             background-color: #f8f9fa;
             padding: 20px;
         }
-        .deletar-filme {
+        .atualizar-cliente {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 500px;
             margin: 0 auto;
+        }
+        .atualizar-cliente h1 {
+            color: #007bff;
+            margin-bottom: 20px;
             text-align: center;
         }
-        .deletar-filme h1 {
-            color: #dc3545;
-            margin-bottom: 20px;
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
         }
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-            margin-right: 10px;
-        }
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #bd2130;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-        .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="deletar-filme">
-        <h1>Deletar Filme</h1>
-        <p>Tem certeza de que deseja deletar o filme <strong>"{{ object.titulo }}"</strong>?</p>
+    <div class="atualizar-cliente">
+        <h1>Atualizar Dados do Cliente</h1>
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Confirmar</button>
-            <a href="{% url 'listar_filme' %}" class="btn btn-secondary">Cancelar</a>
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </div>
 
